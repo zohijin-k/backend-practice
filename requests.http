@@ -1,0 +1,66 @@
+
+### 1. POST - 도서 등록 (201)
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "스프링 부트 입문",
+  "author": "조이진"
+}
+
+### 2. POST - 여러 권 등록 (201)
+POST http://localhost:8080/api/books/bulk
+Content-Type: application/json
+
+[
+  {
+    "title": "자바 기초",
+    "author": "조복남"
+  },
+  {
+    "title": "HTTP 완벽 가이드",
+    "author": "조윤복"
+  }
+]
+
+### 3. GET - 전체 조회 (200)
+GET http://localhost:8080/api/books
+
+### 4. GET - 특정 도서 조회 (200)
+GET http://localhost:8080/api/books/1
+
+### 5. PUT - 도서 정보 수정 (200)
+PUT http://localhost:8080/api/books/1
+Content-Type: application/json
+
+{
+  "title": "스프링 부트 실전",
+  "author": "윤희진"
+}
+
+### 6. PUT - 대출 처리 (200)
+PUT http://localhost:8080/api/books/1/borrow
+
+### 7. DELETE - 반납 처리 (200)
+DELETE http://localhost:8080/api/books/1/borrow
+
+### 8. DELETE - 도서 삭제 (200)
+DELETE http://localhost:8080/api/books/1
+
+### 9. 400 - 잘못된 등록 요청
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "",
+  "author": "윤민서"
+}
+
+### 10. 404 - 없는 도서 조회
+GET http://localhost:8080/api/books/999
+
+### 11. 500 - 서버 오류 테스트
+GET http://localhost:8080/api/demo/error/500
+
+### 12. 503 - 서비스 이용 불가 테스트
+GET http://localhost:8080/api/demo/error/503
